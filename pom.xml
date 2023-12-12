@@ -15,12 +15,12 @@
         <dependency>
             <groupId>com.github.docker-java</groupId>
             <artifactId>docker-java</artifactId>
-            <version>3.3.4</version> <!-- Assurez-vous d'utiliser la dernière version disponible -->
+            <version>3.3.4</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
-            <version>1.7.30</version> <!-- Utilisez la dernière version disponible -->
+            <version>1.7.30</version>
         </dependency>
 
     </dependencies>
