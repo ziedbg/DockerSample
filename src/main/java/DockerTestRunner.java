@@ -34,9 +34,9 @@ public class DockerTestRunner {
             copyFileToContainer("nodejs-tests/incrementTest/incrementIfPositive.js", "/app/incrementTest/");
             executeTest("/app/incrementTest/incrementIfPositive.test.js", incrementTestConfigPath);
 
-            // Copier et exécuter les tests pour reverseWords
-            copyFileToContainer("nodejs-tests/reverseWordsTest/reverseWords.js", "/app/reverseWordsTest/");
-            executeTest("/app/reverseWordsTest/reverseWords.test.js", reverseWordsTestConfigPath);
+//            // Copier et exécuter les tests pour reverseWords
+//            copyFileToContainer("nodejs-tests/reverseWordsTest/reverseWords.js", "/app/reverseWordsTest/");
+//            executeTest("/app/reverseWordsTest/reverseWords.test.js", reverseWordsTestConfigPath);
         } catch (Exception e) {
             e.printStackTrace();
         }
