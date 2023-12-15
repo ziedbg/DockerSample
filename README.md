@@ -26,30 +26,12 @@ git clone https://github.com/ziedbg/DockerSample
 cd DockerSample
 
 
-### Construire l' Image Docker alpine-nodejs pour l'exemple DockerInteraction
+### Construire les Images Docker et Lancer les Conteneurs
 
-cd resources/dockers/alpine-nodejs
-docker build -t nodej-alpine .
+Exécutez le fichier batch setup-docker.bat (Windows) ou setup-docker.sh (Linux/Mac) pour construire automatiquement les images Docker et lancer les conteneurs :
 
-
-### Lancer le Conteneur Docker  pour l'exemple DockerInteraction
-
-
-docker run -d --name c-nodejs-alpine nodej-alpine
-
-
-
-### Construire l' Image Docker nodejs-test-runner pour l'exemple DockerTestRunner
-
-cd resources/nodejs-tests
-docker build -t nodejs-test-runner .
-
-
-
-### Lancer le Conteneur Docker nodejs-test-runner pour l'exemple DockerTestRunner
-
-docker run -d --name js-test-container nodejs-test-runner
-
+./setup-docker.bat  # Sur Windows
+./setup-docker.sh   # Sur Linux/Mac
 
 
 
@@ -62,27 +44,30 @@ mvn clean install
 
 ## Exécution
 
-Pour tester les fonctionnalités de ce projet, suivez les étapes ci-dessous selon l'exemple que vous souhaitez exécuter :
+Suivez les instructions ci-dessous pour exécuter les fonctionnalités de ce projet :
 
-### Exemple avec DockerInteraction
+- **Objectif :** Ce projet comprend désormais une classe principale `DockerManager` qui démontre l'utilisation de diverses opérations Docker, y compris l'exécution de scripts JavaScript et l'exécution de tests JavaScript dans des conteneurs Docker.
+- **Démarrage :** Lancez la classe `DockerManager` depuis votre environnement de développement Java ou en utilisant une ligne de commande Java. Cette classe centralise l'exécution de différentes opérations en interagissant avec les conteneurs Docker.
 
-- **Objectif :** Ce scénario illustre l'exécution d'une fonction JavaScript spécifique sur le conteneur Docker nommé `c-nodejs-alpine`.
-- **Démarrage :** Lancez la classe `DockerInteraction` depuis votre environnement de développement Java ou en utilisant une ligne de commande Java. Cette classe envoie une commande au conteneur Docker pour exécuter la fonction JavaScript.
+### Détails des Opérations dans DockerManager
 
-### Exemple avec DockerTestRunner
+1. **Exécution de Script JavaScript :** 
+   - La classe envoie une commande à un conteneur Docker (par exemple, `coding-game-js-execution`) pour exécuter un script JavaScript.
+   - Le script est spécifié dans le code de la classe et peut être modifié selon les besoins.
 
-- **Objectif :** Dans cet exemple, deux fonctions JavaScript sont copiées dans des projets distincts au sein du conteneur Docker `js-test-container`. Des tests unitaires sont ensuite exécutés pour chaque fonction, et les résultats des tests sont récupérés et affichés dans la console Java.
-- **Démarrage :** Exécutez la classe `DockerTestRunner`. Cette classe gère la copie des fichiers de script et de test dans le conteneur, l'exécution des tests, et l'affichage des résultats.
+2. **Exécution de Tests JavaScript :** 
+   - Deux fonctions JavaScript, avec leurs tests unitaires associés, sont copiées dans des projets distincts au sein d'un conteneur Docker (par exemple, `coding-game-js-test-runner`).
+   - Les tests unitaires pour ces fonctions sont exécutés dans le conteneur, et les résultats des tests sont récupérés et affichés dans la console Java.
 
-Assurez-vous de suivre les instructions de configuration et d'installation avant d'exécuter ces exemples pour garantir leur bon fonctionnement.
+Assurez-vous de suivre les instructions de configuration et d'installation avant d'exécuter cette classe pour garantir le bon fonctionnement du projet.
 
 ## Vérification
 
 Pour vérifier l'exécution du script JavaScript :
 
 - Consultez la console de l'application Java.
-- Utilisez `docker logs c-nodejs-alpine`.
-- Utilisez `docker logs js-test-container`.
+- Utilisez docker logs coding-game-js-execution.
+- Utilisez docker logs coding-game-js-test-runner.
 
 ## Auteur
 
