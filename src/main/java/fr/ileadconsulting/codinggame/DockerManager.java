@@ -6,7 +6,7 @@ import fr.ileadconsulting.codinggame.service.DockerService;
 
 public class DockerManager {
     public static void main(String[] args) {
-        DockerService dockerService = new DockerService("tcp://localhost:2375");
+        DockerService dockerService = new DockerService("unix:///var/run/docker.sock");
 
         try {
             // Exécution d'un script JavaScript

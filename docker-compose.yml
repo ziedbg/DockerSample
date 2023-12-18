@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  # Service pour l'environnement d'exécution Node.js
+  nodejs-execution:
+    build:
+      context: ./src/main/resources/dockers/alpine-nodejs
+    image: i-lead-consulting/coding-game-js-env
+    container_name: coding-game-js-execution
+
+  # Service pour l'environnement de test Node.js
+  nodejs-test:
+    build:
+      context: ./src/main/resources/dockers/nodejs-tests
+    image: i-lead-consulting/coding-game-js-test-env
+    container_name: coding-game-js-test-runner
+
+  # Service pour l'application Java
+  java-application:
+    build:
+      context: .  # Le contexte est la racine du projet
+      dockerfile: docker/java/Dockerfile
+    container_name: coding-game-java-app
+    depends_on:
+      - nodejs-execution
+      - nodejs-test
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+
+
+

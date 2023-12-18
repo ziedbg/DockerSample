@@ -1,79 +1,65 @@
 # DockerSample: Exécution de Scripts JavaScript dans Docker via Java
 
-Ce projet démontre comment exécuter des scripts JavaScript dans un conteneur Docker en utilisant une application Java. L'application Java envoie des commandes au conteneur Docker pour exécuter des scripts JavaScript.
+Ce projet illustre l'exécution de scripts JavaScript dans des conteneurs Docker gérés par une application Java. Il démontre l'utilisation de design patterns dans le code Java, l'orchestration des conteneurs avec Docker Compose et l'architecture DooD (Docker outside of Docker).
 
 ## Table des Matières
 
 - [Prérequis](#prérequis)
 - [Installation](#installation)
 - [Configuration du Projet Java](#configuration-du-projet-java)
-- [Exécution](#exécution)
+- [Utilisation de Docker Compose](#utilisation-de-docker-compose)
 - [Vérification](#vérification)
+- [Architecture](#architecture)
 - [Auteur](#auteur)
 - [Licence](#licence)
 
 ## Prérequis
 
-- Docker
-- Java (JDK 8 ou supérieur)
+- Docker et Docker Compose
+- Java (JDK 17 ou supérieur)
 - Maven
 
 ## Installation
 
 ### Cloner le Répertoire
 
+```bash
 git clone https://github.com/ziedbg/DockerSample
 cd DockerSample
-
-
-### Construire les Images Docker et Lancer les Conteneurs
-
-Exécutez le fichier batch setup-docker.bat (Windows) ou setup-docker.sh (Linux/Mac) pour construire automatiquement les images Docker et lancer les conteneurs :
-
-./setup-docker.bat  # Sur Windows
-./setup-docker.sh   # Sur Linux/Mac
-
-
+```
 
 ## Configuration du Projet Java
 
 ### Installer les Dépendances
-
+```bash
 mvn clean install
+```
 
+### Utilisation de Docker Compose
 
+Après avoir construit le projet avec Maven, lancez Docker Compose pour démarrer l'application et les conteneurs Docker associés :
+
+```bash
+docker-compose up --build
+```
 ## Exécution
 
-Suivez les instructions ci-dessous pour exécuter les fonctionnalités de ce projet :
-
-- **Objectif :** Ce projet comprend désormais une classe principale `DockerManager` qui démontre l'utilisation de diverses opérations Docker, y compris l'exécution de scripts JavaScript et l'exécution de tests JavaScript dans des conteneurs Docker.
-- **Démarrage :** Lancez la classe `DockerManager` depuis votre environnement de développement Java ou en utilisant une ligne de commande Java. Cette classe centralise l'exécution de différentes opérations en interagissant avec les conteneurs Docker.
-
-### Détails des Opérations dans DockerManager
-
-1. **Exécution de Script JavaScript :** 
-   - La classe envoie une commande à un conteneur Docker (par exemple, `coding-game-js-execution`) pour exécuter un script JavaScript.
-   - Le script est spécifié dans le code de la classe et peut être modifié selon les besoins.
-
-2. **Exécution de Tests JavaScript :** 
-   - Deux fonctions JavaScript, avec leurs tests unitaires associés, sont copiées dans des projets distincts au sein d'un conteneur Docker (par exemple, `coding-game-js-test-runner`).
-   - Les tests unitaires pour ces fonctions sont exécutés dans le conteneur, et les résultats des tests sont récupérés et affichés dans la console Java.
-
-Assurez-vous de suivre les instructions de configuration et d'installation avant d'exécuter cette classe pour garantir le bon fonctionnement du projet.
-
+Une fois Docker Compose lancé, l'application Java (DockerManager) est exécutée automatiquement dans son propre conteneur. Elle gère la création et la supervision des autres conteneurs Docker nécessaires pour l'exécution des scripts JavaScript.
 ## Vérification
 
-Pour vérifier l'exécution du script JavaScript :
+Pour vérifier l'exécution du script JavaScript et des tests unitaires :
 
-- Consultez la console de l'application Java.
-- Utilisez docker logs coding-game-js-execution.
-- Utilisez docker logs coding-game-js-test-runner.
+- Consultez les logs de l'application Java.
+- Utilisez docker logs sur les conteneurs pertinents.
+## Architecture
+Le projet adopte une architecture DooD, permettant au conteneur Java de communiquer avec le Docker host et de gérer d'autres conteneurs. Le fichier docker-compose.yml orchestre la création et la gestion de tous les conteneurs nécessaires.
 
 ## Auteur
 
-Mohamed Zied BEN GHORBAL
+Ce projet et l'ensemble de son code sont la propriété exclusive de I-Lead-Consulting. Tous les droits sont réservés. Aucune partie de ce projet ne peut être copiée, modifiée, publiée, transmise ou vendue sans l'autorisation écrite préalable de I-Lead-Consulting.
 
-## Licence
+## Restrictions de Licence
 
-Ce projet est sous licence MIT.
+Ce projet est une propriété privée et n'est pas sous licence open-source. Toute utilisation, duplication, modification ou distribution du code ou des parties de ce projet est strictement interdite, sauf accord explicite de I-Lead-Consulting.
+
 
